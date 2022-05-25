@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import dbconnect.main.java.model.Alumno;
+import dbconnect.main.java.model.Cliente;
 
 public class Connector {
 	
@@ -50,11 +50,18 @@ public class Connector {
 		Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASS); 
 		Statement statement=connection.createStatement();  
 		
-		ResultSet rs=statement.executeQuery("select * from alumno");  
+		
+		// Ejecuta query de eliminación, actualización o insercioń (DELETE, UPDATE, INSERT)
+		statement.executeUpdate("insert into Cliente (nombre, apellido, email, fechaNacimiento, genero) "
+								+ "values ('Rigoberto', 'Ricciardiello', 'rr0@yelp.com', '1983-04-15', 'M');\n");
+		
+		
+		
+		ResultSet rs=statement.executeQuery("select * from Cliente");  
 		
 		while(rs.next()) {//Avanza de posición en el listado de registros y devuelve true si existe tal
-			Alumno alumno = new Alumno(Integer.valueOf(rs.getString(1)), rs.getString(2), rs.getString(3), 
-										rs.getString(4), rs.getString(5));
+			Cliente alumno = new Cliente(Integer.valueOf(rs.getString(1)), rs.getString(2), rs.getString(3), 
+										rs.getString(5), rs.getString(4));
 			System.out.println(alumno);
 			System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
 		}

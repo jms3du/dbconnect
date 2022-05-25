@@ -1,20 +1,21 @@
 package dbconnect.main.java.model;
 
-public class Alumno {
+public class Cliente {
 	
 	private int id;
 	private String nombre;
 	private String apellidos;
 	private String dni;
 	private String email;
+	private String fechaNacimiento;
 	
 	
-	public Alumno(int id, String nombre, String apellidos, String dni, String email) {
+	public Cliente(int id, String nombre, String apellidos, String fechaNacimiento, String email) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.dni = dni;
+		this.fechaNacimiento = fechaNacimiento;
 		this.email = email;
 	}
 
@@ -69,9 +70,19 @@ public class Alumno {
 	}
 
 
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Alumno [id=" + id + ", name=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", email=" + email
+		return "Alumno [id=" + id + ", name=" + nombre + ", apellidos=" + apellidos + ", fecha de nacimiento=" + fechaNacimiento + ", email=" + email
 				+ "]";
 	}
 	
