@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -51,9 +52,20 @@ public class Connector {
 		Statement statement=connection.createStatement();  
 		
 		
+		//Inserción de datos parametrizada
+		PreparedStatement ps = connection.prepareStatement("INSERT INTO Cliente (nombre, apellido, email, fechaNacimiento, genero) "
+																+ " VALUES (?, ?, ?, ?, ?)");
+		ps.setString(1, "Manuel");
+		ps.setString(2, "Leunam");
+		ps.setString(3, "mm@gmail.com");
+		ps.setString(4, "1985-11-01");
+		ps.setString(5, "F");
+		ps.executeUpdate();
+		//ps.close();
+		
 		// Ejecuta query de eliminación, actualización o insercioń (DELETE, UPDATE, INSERT)
-		statement.executeUpdate("insert into Cliente (nombre, apellido, email, fechaNacimiento, genero) "
-								+ "values ('Rigoberto', 'Ricciardiello', 'rr0@yelp.com', '1983-04-15', 'M');\n");
+		statement.executeUpdate("INSERT INTO Cliente (nombre, apellido, email, fechaNacimiento, genero) "
+								+ "VALUES ('Rigoberto', 'Ricciardiello', 'rr0@yelp.com', '1983-04-15', 'M');\n");
 		
 		
 		
